@@ -130,3 +130,9 @@ Firestore layout: `users/{uid}` holds the account's genres. Under it, `profiles/
 - Film and series data and images come from [TMDB](https://www.themoviedb.org). *This product uses the TMDB API but is not endorsed or certified by TMDB.*
 - Playback uses the Blender Foundation's open movies *Big Buck Bunny*, *Sintel*, *Elephants Dream* and *Tears of Steel* ([CC BY](https://creativecommons.org/licenses/by/3.0/)), served from the Internet Archive.
 - Vireo is a portfolio project. It isn't affiliated with any streaming service and doesn't stream commercial films.
+
+## License
+
+Copyright © 2026 Abdul Haseeb Dar. **All rights reserved.**
+
+You're welcome to read the code and try the live demo. Copying, reusing, modifying or redistributing any part of it requires written permission. See [LICENSE](LICENSE) for the full terms. To ask, get in touch through my [GitHub profile](https://github.com/Haseeb35).

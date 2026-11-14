@@ -1,0 +1,54 @@
+Vireo
+Copyright (c) 2026 Abdul Haseeb Dar. All rights reserved.
+
+This repository and its contents, including the source code, design, user
+interface, graphics, logo, icons, banner and documentation (together, "the
+Software"), are the property of Abdul Haseeb Dar and are protected by
+copyright law.
+
+PERMITTED
+
+You may view the Software on GitHub and use the hosted live demo for personal,
+non-commercial evaluation, for example to review it as part of the author's
+portfolio.
+
+NOT PERMITTED WITHOUT PRIOR WRITTEN PERMISSION FROM THE AUTHOR
+
+  1. Copying, reproducing or downloading the Software, in whole or in part,
+     for use outside of viewing it on GitHub.
+  2. Modifying the Software or creating works based on it.
+  3. Distributing, publishing, sublicensing, selling or otherwise making the
+     Software available to others.
+  4. Using the Software, or any part of it, in another project, product or
+     service, whether commercial or non-commercial.
+  5. Deploying or hosting the Software, or a copy of it, under any other name
+     or address.
+  6. Removing or altering this notice or any copyright notice.
+
+No licence or other right is granted by implication or otherwise, except as
+stated above. Viewing and forking provided by GitHub's own Terms of Service do
+not grant any right to use, modify or distribute the Software.
+
+To request permission, contact the author through their GitHub profile:
+https://github.com/Haseeb35
+
+THIRD-PARTY MATERIAL
+
+The following are not owned by the author and remain subject to their own
+terms. Nothing in this notice restricts or grants rights in them:
+
+  - Film and series data and images, provided by TMDB (themoviedb.org).
+    This product uses the TMDB API but is not endorsed or certified by TMDB.
+  - "Big Buck Bunny", "Sintel", "Elephants Dream" and "Tears of Steel",
+    copyright Blender Foundation, used under Creative Commons Attribution
+    licences.
+  - The Schibsted Grotesk and JetBrains Mono typefaces, used under the SIL
+    Open Font License.
+  - Open-source packages listed in package.json, each under its own licence.
+
+DISCLAIMER
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
+ITS USE.
