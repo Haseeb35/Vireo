@@ -26,7 +26,7 @@ export function ContinueRow() {
   if (items.length === 0) return null;
 
   return (
-    <section className="relative">
+    <section className="relative min-w-0">
       <h2 className="px-5 text-base font-semibold tracking-tight md:px-10 md:text-lg">
         Continue watching{active ? ` for ${active.name}` : ""}
       </h2>

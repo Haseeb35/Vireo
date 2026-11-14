@@ -37,7 +37,7 @@ export function BrowsePage({ featured, eyebrow, rows }: { featured: () => Promis
       <Suspense fallback={<HeroSkeleton />}>
         <Featured load={featured} eyebrow={eyebrow} />
       </Suspense>
-      <div className="relative z-10 -mt-28 grid gap-6 md:-mt-36 md:gap-8">
+      <div className="relative z-10 -mt-28 grid grid-cols-[minmax(0,1fr)] gap-6 md:-mt-36 md:gap-8">
         {rows.map((r) => (
           <Suspense key={r.heading} fallback={<RowSkeleton />}>
             <TitleRow {...r} />

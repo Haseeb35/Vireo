@@ -26,11 +26,13 @@ export function Navbar() {
 
   return (
     <header
-      // pt: clears the notch / status bar when installed as an app on a phone
+      // pt: clears the notch / status bar when installed as an app on a phone.
+      // The divider is a box-shadow, not a border: a border strip repeats the
+      // background gradient and shows up as a dark line over the hero.
       className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
         scrolled
-          ? "bg-screen/95 backdrop-blur-sm border-b border-line"
-          : "bg-gradient-to-b from-black/70 to-transparent border-b border-transparent"
+          ? "bg-screen/95 backdrop-blur-sm shadow-[0_1px_0_var(--color-line)]"
+          : "bg-gradient-to-b from-black/70 to-transparent"
       }`}
     >
       <nav className="mx-auto flex h-16 items-center gap-10 px-5 md:px-10">
