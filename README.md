@@ -8,6 +8,14 @@
 </p>
 
 <p align="center">
+  <a href="https://vireo-chi.vercel.app"><img src="https://img.shields.io/badge/%E2%96%B6%20Live%20demo-vireo--chi.vercel.app-d9963f?style=for-the-badge&labelColor=101216" alt="Live demo: vireo-chi.vercel.app"></a>
+</p>
+
+<p align="center">
+  <sub>Create a free account to try profiles, My List, the player and Continue Watching. Every title plays an open-licence Blender film as a stand-in.</sub>
+</p>
+
+<p align="center">
   <img src="docs/screenshots/home.jpg" alt="Vireo home page: featured title banner and a row of trending posters" width="100%">
 </p>
 
