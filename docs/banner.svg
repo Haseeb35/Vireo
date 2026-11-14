@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-label="Vireo — films and series, lit by whatever you're watching">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="80"/>
+    </filter>
+    <radialGradient id="dotGlow">
+      <stop offset="0" stop-color="#d9963f" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#d9963f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fadeRight" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#07080a" stop-opacity="1"/>
+      <stop offset="0.45" stop-color="#07080a" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#07080a" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="fadeBottom" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0.55" stop-color="#07080a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#07080a" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Abstract "posters", each in its film's colour -->
+    <linearGradient id="p1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f3b44"/><stop offset="1" stop-color="#c98a3c"/></linearGradient>
+    <linearGradient id="p2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0f2a"/><stop offset="1" stop-color="#1d3d8f"/></linearGradient>
+    <linearGradient id="p3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#140606"/><stop offset="1" stop-color="#7a1414"/></linearGradient>
+    <linearGradient id="p4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1a17"/><stop offset="1" stop-color="#2f6f62"/></linearGradient>
+    <linearGradient id="p5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1838"/><stop offset="1" stop-color="#d77a8f"/></linearGradient>
+    <linearGradient id="p6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b1a07"/><stop offset="1" stop-color="#e07b18"/></linearGradient>
+    <linearGradient id="p7" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#13304f"/><stop offset="1" stop-color="#e7a77c"/></linearGradient>
+    <linearGradient id="p8" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22252a"/><stop offset="1" stop-color="#8a8f96"/></linearGradient>
+    <linearGradient id="seek" x1="0" x2="1"><stop offset="0" stop-color="#d9963f"/><stop offset="1" stop-color="#f0b45f"/></linearGradient>
+    <clipPath id="frame"><rect width="1280" height="420" rx="18"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1280" height="420" fill="#07080a"/>
+
+    <!-- Ambient light: the colour of whatever is on screen spills into the UI -->
+    <g filter="url(#glow)" opacity="0.55">
+      <circle cx="210" cy="330" r="190" fill="#d9963f"/>
+      <circle cx="820" cy="120" r="170" fill="#4f8cff"/>
+      <circle cx="1130" cy="330" r="160" fill="#d9452b"/>
+    </g>
+
+    <!-- Poster wall -->
+    <g transform="translate(560 -40) rotate(-8)">
+      <g>
+        <rect x="0"   y="40"  width="150" height="225" rx="8" fill="url(#p1)"/>
+        <rect x="166" y="0"   width="150" height="225" rx="8" fill="url(#p2)"/>
+        <rect x="332" y="56"  width="150" height="225" rx="8" fill="url(#p3)"/>
+        <rect x="498" y="16"  width="150" height="225" rx="8" fill="url(#p4)"/>
+        <rect x="664" y="48"  width="150" height="225" rx="8" fill="url(#p5)"/>
+        <rect x="0"   y="281" width="150" height="225" rx="8" fill="url(#p6)"/>
+        <rect x="166" y="241" width="150" height="225" rx="8" fill="url(#p7)"/>
+        <rect x="332" y="297" width="150" height="225" rx="8" fill="url(#p8)"/>
+        <rect x="498" y="257" width="150" height="225" rx="8" fill="url(#p1)"/>
+        <rect x="664" y="289" width="150" height="225" rx="8" fill="url(#p2)"/>
+      </g>
+      <!-- simple shapes so they read as artwork, not swatches -->
+      <circle cx="75"  cy="190" r="34" fill="#f2d39b" opacity="0.9"/>
+      <circle cx="241" cy="110" r="44" fill="none" stroke="#7fd3ff" stroke-width="2" opacity="0.7"/>
+      <circle cx="241" cy="110" r="8" fill="#7fd3ff"/>
+      <circle cx="400" cy="140" r="30" fill="#e8b9a0" opacity="0.85"/>
+      <circle cx="412" cy="132" r="28" fill="#2a0909"/>
+      <rect x="664" y="150" width="150" height="4" fill="#f6c9b4" opacity="0.8"/>
+      <circle cx="75"  cy="420" r="30" fill="#ffd27a" opacity="0.9"/>
+      <rect x="166" y="350" width="150" height="116" fill="#13304f" opacity="0.65"/>
+    </g>
+
+    <!-- Fade the wall into the dark so the type stays readable -->
+    <rect width="1280" height="420" fill="url(#fadeRight)"/>
+    <rect width="1280" height="420" fill="url(#fadeBottom)"/>
+
+    <!-- Wordmark -->
+    <g font-family="'Schibsted Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif">
+      <!-- textLength pins the width, so the dot lines up whatever font the viewer has -->
+      <text x="72" y="196" font-size="124" font-weight="800" fill="#f4f5f7" textLength="404" lengthAdjust="spacingAndGlyphs">VIREO</text>
+      <circle cx="500" cy="186" r="26" fill="url(#dotGlow)"/>
+      <circle cx="500" cy="186" r="11" fill="#d9963f"/>
+    </g>
+
+    <g font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+      <text x="76" y="246" font-size="19" letter-spacing="1.5" fill="#c4c8cf">FILMS AND SERIES, LIT BY WHATEVER YOU'RE WATCHING</text>
+    </g>
+
+    <!-- Player seek bar: the film's colour, half watched -->
+    <rect x="76" y="292" width="430" height="4" rx="2" fill="#ffffff" opacity="0.18"/>
+    <rect x="76" y="292" width="262" height="4" rx="2" fill="url(#seek)"/>
+    <circle cx="338" cy="294" r="7" fill="#f4f5f7"/>
+
+    <g font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" letter-spacing="1" fill="#8b9099">
+      <text x="76" y="336">NEXT.JS 16  ·  REACT 19  ·  FIREBASE  ·  TMDB  ·  PWA</text>
+    </g>
+  </g>
+</svg>

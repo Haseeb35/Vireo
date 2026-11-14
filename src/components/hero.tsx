@@ -110,7 +110,7 @@ export function HeroCarousel({ slides, eyebrow = "TRENDING THIS WEEK" }: { slide
 
       {/* Slide indicators: the active one fills over the slide duration */}
       {slides.length > 1 && (
-        <div className="absolute right-5 bottom-36 z-10 flex gap-1.5 md:right-10 md:bottom-44">
+        <div className="absolute right-5 bottom-36 z-10 hidden gap-1.5 md:flex md:right-10 md:bottom-44">
           {slides.map((s, i) => (
             <button
               key={s.id}
