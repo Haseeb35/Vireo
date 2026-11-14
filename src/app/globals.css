@@ -1,26 +1,107 @@
 @import "tailwindcss";
 
+/*
+  Vireo · Direction B "Projector"
+  The interface stays near-black and quiet; colour comes from the films.
+  --amb is the ambient accent. It defaults to a neutral steel-blue and is
+  overridden per film (from the poster's dominant colour) in later steps.
+*/
+@property --amb {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #5f7fa8;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --amb: #5f7fa8;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Surfaces */
+  --color-screen: #07080a; /* page background */
+  --color-card: #101216; /* pop-ups, panels */
+  --color-raised: #181b21; /* hover states, inputs */
+  --color-line: #1f2228; /* hairlines, dividers */
+
+  /* Text */
+  --color-ink: #f4f5f7; /* primary text */
+  --color-steel: #8b9099; /* secondary text */
+  --color-dim: #5b606a; /* tertiary / disabled */
+
+  /* Ambient accent (changes per film) */
+  --color-amb: var(--amb);
+
+  /* Type */
+  --font-sans: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /* Motion */
+  --ease-projector: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+  Note: --amb is NOT transitioned here. Animating an inherited variable on <html>
+  forces a style recalculation of every element on every frame. Instead, the few
+  elements that use the colour transition their own background-color
+  (Tailwind: transition-colors duration-700 ease-projector).
+*/
+html {
+  background: var(--color-screen);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: clip; /* nothing (e.g. a scaled poster) can widen the page */
+  background: var(--color-screen);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--amb) 45%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Thin, unobtrusive scrollbars for horizontal rows */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
