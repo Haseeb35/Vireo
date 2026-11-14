@@ -26,7 +26,8 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+      // pt: clears the notch / status bar when installed as an app on a phone
+      className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
         scrolled
           ? "bg-screen/95 backdrop-blur-sm border-b border-line"
           : "bg-gradient-to-b from-black/70 to-transparent border-b border-transparent"
@@ -43,7 +44,8 @@ export function Navbar() {
         </Suspense>
 
         <div className="ml-auto flex items-center gap-5 md:ml-0">
-          <Link href="/search" aria-label="Search" className="text-ink/90 hover:text-ink">
+          {/* On phones, Search lives in the bottom tab bar */}
+          <Link href="/search" aria-label="Search" className="hidden text-ink/90 hover:text-ink md:block">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-5">
               <circle cx="11" cy="11" r="7" />
               <path d="m20 20-3.5-3.5" />

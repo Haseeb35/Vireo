@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Full-bleed version: Android/iOS crop it to their own shape. All artwork sits inside the 80% safe zone. -->
+  <defs>
+    <radialGradient id="amb" cx="0.3" cy="0.85" r="0.75">
+      <stop offset="0" stop-color="#d9963f" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#d9963f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="dot">
+      <stop offset="0" stop-color="#d9963f" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#d9963f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="#07080a"/>
+  <rect width="512" height="512" fill="url(#amb)"/>
+  <path d="M140 146h70l46 150 46-150h70l-82 226h-68z" fill="#f4f5f7"/>
+  <circle cx="378" cy="352" r="44" fill="url(#dot)"/>
+  <circle cx="378" cy="352" r="20" fill="#d9963f"/>
+</svg>

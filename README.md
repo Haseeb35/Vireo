@@ -19,6 +19,7 @@
 - **Accounts and profiles.** Sign up with email or Google, pick favourite genres, and keep up to five profiles per account. Each profile gets its own "Because you like…" rows, My List and watch history.
 - **Player.** A custom full-screen player with keyboard shortcuts, resume from where you stopped, a Continue Watching row, and a next-episode countdown for series.
 - **My List and search.** Save titles per profile. Search films, series and people as you type, with recent searches and a Films/Series filter.
+- **Installable and offline-ready.** Install Vireo from the browser to your home screen or dock. Pages you've opened, plus your profiles and My List, keep working without a connection, and changes sync when you're back online. Phones get a bottom tab bar.
 
 <table>
   <tr>
@@ -72,6 +73,12 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). While a key is missing, the home page shows a setup checklist. It appears only in development.
 
+The service worker (install and offline support) only runs in production mode, so it never caches files while you develop. To try it locally:
+
+```bash
+npm run build && npm start
+```
+
 ## Project structure
 
 ```
@@ -105,8 +112,8 @@ Firestore layout: `users/{uid}` holds the account's genres. Under it, `profiles/
 ## Roadmap
 
 - [x] Home, title detail, accounts, profiles, player, My List, search
-- [ ] Install as an app (PWA), offline screen and app icons
-- [ ] Bottom tab bar on phones
+- [x] Install as an app (PWA), offline support and app icons
+- [x] Bottom tab bar on phones
 - [ ] Genre and year filters in search
 - [ ] Kids profiles
 
