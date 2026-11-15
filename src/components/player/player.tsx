@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { loadSeason } from "@/app/actions";
 import { useAuth } from "@/components/auth/auth-provider";
 import { AmbientScope } from "@/components/detail/ambient-scope";
@@ -67,6 +67,9 @@ function PlayerCore({
   const router = useRouter();
   const root = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLVideoElement>(null);
+  // Our own handle on the <video>. React detaches DOM refs when Next.js hides
+  // this page (see below), so saving and pausing on hide use this instead.
+  const media = useRef<HTMLVideoElement | null>(null);
 
   // Where to start: decided once, after checking saved progress.
   const [start, setStart] = useState<{ ep: Ep | null; at: number } | null>(null);
@@ -125,7 +128,7 @@ function PlayerCore({
 
   // ── 2. Saving progress ──────────────────────────────────────────
   const save = useCallback(() => {
-    const v = ref.current;
+    const v = ref.current ?? media.current;
     if (!v || !v.duration || !Number.isFinite(v.duration)) return;
     saveProgress(uid, profileId, {
       mediaType,
@@ -158,6 +161,17 @@ function PlayerCore({
       saveRef.current(); // leaving the player
     };
   }, []);
+
+  // Next.js hides pages you leave instead of removing them (React <Activity>),
+  // and a hidden <video> keeps playing. Layout-effect cleanup runs right as the
+  // player is hidden: save the position and pause.
+  useLayoutEffect(
+    () => () => {
+      saveRef.current();
+      media.current?.pause();
+    },
+    [],
+  );
 
   // ── 3. Playback controls ────────────────────────────────────────
   const toggle = useCallback(() => {
@@ -306,6 +320,7 @@ function PlayerCore({
           onDoubleClick={toggleFullscreen}
           onLoadedMetadata={(e) => {
             const v = e.currentTarget;
+            media.current = v;
             setDuration(v.duration);
             if (start.at > 0 && start.at < v.duration - 5) v.currentTime = start.at;
           }}

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { MyListButton } from "@/components/my-list/my-list-button";
 import { PlayButton } from "@/components/player/play-button";
 import { tmdbImage } from "@/lib/format";
@@ -34,17 +34,16 @@ export function DetailHeader({
 }: Props) {
   const [playing, setPlaying] = useState(false);
 
+  // Next.js hides pages you navigate away from instead of removing them (React
+  // <Activity>). When this pop-up is hidden, close the trailer so it's off when
+  // you come back. (TrailerFrame silences the video itself immediately.)
+  useLayoutEffect(() => () => setPlaying(false), []);
+
   return (
     <header>
       <div className="relative aspect-video w-full overflow-hidden bg-raised md:aspect-[16/8]">
         {playing && trailerKey ? (
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${trailerKey}?autoplay=1&rel=0&modestbranding=1`}
-            title={`${title} trailer`}
-            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-            allowFullScreen
-            className="absolute inset-0 size-full"
-          />
+          <TrailerFrame videoKey={trailerKey} title={title} />
         ) : (
           <>
             {backdropPath && (
@@ -96,5 +95,35 @@ export function DetailHeader({
         </div>
       </div>
     </header>
+  );
+}
+
+/**
+ * The YouTube trailer. A hidden page keeps its DOM, so a hidden iframe would
+ * keep playing with sound. When this component is hidden (or removed), its
+ * cleanup points the iframe at a blank page, which stops playback instantly.
+ */
+function TrailerFrame({ videoKey, title }: { videoKey: string; title: string }) {
+  const ref = useRef<HTMLIFrameElement>(null);
+  const src = `https://www.youtube-nocookie.com/embed/${videoKey}?autoplay=1&rel=0&modestbranding=1`;
+
+  useLayoutEffect(() => {
+    const frame = ref.current; // captured now: refs are detached before cleanup runs
+    // Shown again after being hidden (or React's dev double-mount): restore the video.
+    if (frame && frame.src !== src) frame.src = src;
+    return () => {
+      if (frame) frame.src = "about:blank";
+    };
+  }, [src]);
+
+  return (
+    <iframe
+      ref={ref}
+      src={src}
+      title={`${title} trailer`}
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+      allowFullScreen
+      className="absolute inset-0 size-full"
+    />
   );
 }
